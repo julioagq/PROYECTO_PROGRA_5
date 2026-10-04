@@ -1,7 +1,10 @@
+using PROYECTO_PROGRA_5.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ButacaService>();
 
 var app = builder.Build();
 
