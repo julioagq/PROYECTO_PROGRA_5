@@ -1,7 +1,13 @@
+using PROYECTO_PROGRA_5.Hubs;
+using PROYECTO_PROGRA_5.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
+builder.Services.AddSingleton<ButacaService>();
+
 
 var app = builder.Build();
 
@@ -25,5 +31,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+app.MapHub<ButacasHub>("/hubs/butacas");
 
 app.Run();
